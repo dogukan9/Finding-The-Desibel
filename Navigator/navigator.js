@@ -1,7 +1,7 @@
 import React from "react";
 import {createStackNavigator} from "@react-navigation/stack";
 import LoginScreen from "../Screens/login/login";
-import MainScreen from "../Screens/main/main";
+import RegisterFormScreen from "../Screens/registerForm/registerForm";
 import AcceptFormScreen from "../Screens/acceptForm/accept";
 import InstructionScreen from "../Screens/ınstructions/instruction";
 import ListenScreen from "../Screens/listen/listen";
@@ -15,10 +15,10 @@ const Stack=createStackNavigator();
 const StackNavigation=(props)=>{
     return(
         <Stack.Navigator>
-            <Stack.Screen name="Login" component={LoginScreen} options={{}}></Stack.Screen>
-            <Stack.Screen name="Main" component={MainScreen} options={{}}></Stack.Screen>
-            <Stack.Screen name="Accept" component={AcceptFormScreen} options={{}}></Stack.Screen>
-            <Stack.Screen name="Instruction" component={InstructionScreen} options={{}}></Stack.Screen>
+            <Stack.Screen name="login" component={LoginScreen} options={{headerShown:false}}></Stack.Screen>
+            <Stack.Screen name="register" component={RegisterFormScreen} options={{headerShown:false}}></Stack.Screen>
+            <Stack.Screen name="accept" component={AcceptFormScreen} options={{}}></Stack.Screen>
+            <Stack.Screen name="instruction" component={InstructionScreen} options={{}}></Stack.Screen>
             <Stack.Screen name="earOption" component={EarOptionScreen} options={{}}></Stack.Screen>
             <Stack.Screen name="listen" component={ListenScreen} options={{}}></Stack.Screen>
             <Stack.Screen name="question" component={QuestionScreen} options={{}}></Stack.Screen>
