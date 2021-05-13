@@ -93,5 +93,7 @@ export default function (state = initialState, action) {
         gender: action.gender,
       };
     }
+    default:
+      return state;
   }
 }

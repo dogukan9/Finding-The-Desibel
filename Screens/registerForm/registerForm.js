@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   View,
   ScrollView,
@@ -6,6 +6,7 @@ import {
   Animated,
   Dimensions,
   TouchableOpacity,
+<<<<<<< HEAD
 } from "react-native";
 import CToolbar from "../../Components/CToolBar";
 import CTextInput from "../../Components/CTextInput";
@@ -13,23 +14,33 @@ import { style } from "../registerForm/style";
 import { RadioButton } from "react-native-paper";
 import DateTimePicker from "@react-native-community/datetimepicker";
 const wHeight = Dimensions.get("window").width;
+=======
+  FlatList,
+} from 'react-native';
+import CToolbar from '../../Components/CToolBar';
+import CTextInput from '../../Components/CTextInput';
+import { style } from '../registerForm/style';
+import { RadioButton } from 'react-native-paper';
+import DateTimePicker from '@react-native-community/datetimepicker';
+const wHeight = Dimensions.get('window').width;
+>>>>>>> 0c2d5b76d138a0ffb09dadee727a9a7429ed211a
 const H_MAX_HEIGHT = wHeight * 0.36;
 const H_MIN_HEIGHT = wHeight * 0.24;
 const RegisterFormScreen = (props) => {
-  const [name, setName] = React.useState("");
-  const [surname, setSurname] = React.useState("");
-  const [sex, setSex] = React.useState("Kadın");
+  const [name, setName] = React.useState('');
+  const [surname, setSurname] = React.useState('');
+  const [sex, setSex] = React.useState('Kadın');
   const [showDate, setShowDate] = React.useState(false);
-  const [phone, setPhone] = React.useState("");
+  const [phone, setPhone] = React.useState('');
   const scrollOffsetY = React.useRef(new Animated.Value(1)).current;
   const headerScrollHeight = scrollOffsetY.interpolate({
     inputRange: [0, 1],
     outputRange: [H_MAX_HEIGHT, H_MIN_HEIGHT],
-    extrapolate: "clamp",
+    extrapolate: 'clamp',
   });
 
   const [date, setDate] = React.useState(new Date(1598051730000));
-  const [mode, setMode] = React.useState("date");
+  const [mode, setMode] = React.useState('date');
   const [show, setShow] = React.useState(false);
   const [runIt, setRunIt] = React.useState(false);
 
@@ -47,7 +58,7 @@ const RegisterFormScreen = (props) => {
   };
 
   const showDatepicker = async () => {
-    await showMode("date");
+    await showMode('date');
     setShowDate(true);
   };
 
@@ -63,13 +74,13 @@ const RegisterFormScreen = (props) => {
     <View
       style={{
         flex: 1,
-        flexDirection: "column",
-        backgroundColor: "#2196F3",
+        flexDirection: 'column',
+        backgroundColor: '#2196F3',
       }}
     >
       <Animated.View style={{ height: headerScrollHeight }}>
         <CToolbar
-          title="Hasta Kayıt Ekranı"
+          title='Hasta Kayıt Ekranı'
           onBackPress={props.navigation.goBack}
         />
       </Animated.View>
@@ -77,7 +88,7 @@ const RegisterFormScreen = (props) => {
         <View style={style.formGroup}>
           <Text style={style.label}>Adınız</Text>
           <CTextInput
-            placeholder="Adınız"
+            placeholder='Adınız'
             value={name}
             onChangeText={(name) => setName(name)}
           />
@@ -86,7 +97,7 @@ const RegisterFormScreen = (props) => {
         <View style={style.formGroup}>
           <Text style={style.label}>Soyadınız</Text>
           <CTextInput
-            placeholder="Soyadınız"
+            placeholder='Soyadınız'
             value={surname}
             onChangeText={(surname) => setSurname(surname)}
           />
@@ -96,49 +107,49 @@ const RegisterFormScreen = (props) => {
           <Text style={style.label}>İrtibat Numarası</Text>
           <CTextInput
             phone={true}
-            placeholder="telefon numarası giriniz"
+            placeholder='telefon numarası giriniz'
             value={phone}
             onChangeText={(phone) => setPhone(phone)}
           ></CTextInput>
         </View>
         <View
           style={{
-            flexDirection: "row",
-            justifyContent: "space-around",
-            alignContent: "center",
+            flexDirection: 'row',
+            justifyContent: 'space-around',
+            alignContent: 'center',
           }}
         >
           <Text
             style={{
-              fontWeight: "bold",
+              fontWeight: 'bold',
               fontSize: 20,
-              marginTop: "2%",
-              color: "white",
+              marginTop: '2%',
+              color: 'white',
             }}
           >
             Kadın
           </Text>
           <RadioButton
-            value="Kadın"
-            color="white"
-            status={sex === "Kadın" ? "checked" : "unchecked"}
-            onPress={() => setSex("Kadın")}
+            value='Kadın'
+            color='white'
+            status={sex === 'Kadın' ? 'checked' : 'unchecked'}
+            onPress={() => setSex('Kadın')}
           />
           <Text
             style={{
-              fontWeight: "bold",
+              fontWeight: 'bold',
               fontSize: 20,
-              marginTop: "2%",
-              color: "white",
+              marginTop: '2%',
+              color: 'white',
             }}
           >
             Erkek
           </Text>
           <RadioButton
-            value="Erkek"
-            color="white"
-            status={sex === "Erkek" ? "checked" : "unchecked"}
-            onPress={() => setSex("Erkek")}
+            value='Erkek'
+            color='white'
+            status={sex === 'Erkek' ? 'checked' : 'unchecked'}
+            onPress={() => setSex('Erkek')}
           />
         </View>
 
@@ -152,23 +163,23 @@ const RegisterFormScreen = (props) => {
 
           {show && (
             <DateTimePicker
-              testID="dateTimePicker"
+              testID='dateTimePicker'
               value={date}
               mode={mode}
-              display="default"
+              display='default'
               onChange={onChange}
             />
           )}
           {showDate && (
             <View
               style={{
-                justifyContent: "center",
-                alignItems: "center",
-                marginVertical: "5%",
+                justifyContent: 'center',
+                alignItems: 'center',
+                marginVertical: '5%',
               }}
             >
               <Text
-                style={{ fontWeight: "bold", fontSize: 20, color: "white" }}
+                style={{ fontWeight: 'bold', fontSize: 20, color: 'white' }}
               >
                {runIt && (parseDate(date))}
               </Text>
@@ -182,9 +193,10 @@ const RegisterFormScreen = (props) => {
               props.navigation.navigate("instruction");
             }}
           >
-            <Text style={style.buttonText}>Sonraki sayfa  </Text>
-          </TouchableOpacity>
-       
+            <Text>
+            Sonraki sayfa
+          </Text>
+        </TouchableOpacity>
       </ScrollView>
     </View>
   );
