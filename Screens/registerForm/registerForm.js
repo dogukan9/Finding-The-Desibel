@@ -6,7 +6,6 @@ import {
   Animated,
   Dimensions,
   TouchableOpacity,
-  FlatList,
 } from "react-native";
 import CToolbar from "../../Components/CToolBar";
 import CTextInput from "../../Components/CTextInput";
@@ -32,12 +31,14 @@ const RegisterFormScreen = (props) => {
   const [date, setDate] = React.useState(new Date(1598051730000));
   const [mode, setMode] = React.useState("date");
   const [show, setShow] = React.useState(false);
+  const [runIt, setRunIt] = React.useState(false);
 
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate || date;
     setShow(Platform.OS === "ios");
+    console.log("here :"+ currentDate);
     setDate(currentDate);
-    console.log(date);
+    setRunIt(true)
   };
 
   const showMode = (currentMode) => {
@@ -50,6 +51,14 @@ const RegisterFormScreen = (props) => {
     setShowDate(true);
   };
 
+  const parseDate=(str)=>{
+    const datee=new Date(Date.parse(str));
+    console.log(datee);
+    var dd = String(datee.getDate()).padStart(2, "0");
+    var mm = String(datee.getMonth() + 1).padStart(2, "0"); //January is 0!
+    var yyyy = datee.getFullYear();
+    return "Dogum tarihiniz :"+dd+"."+mm+"."+yyyy;
+  }
   return (
     <View
       style={{
@@ -161,7 +170,7 @@ const RegisterFormScreen = (props) => {
               <Text
                 style={{ fontWeight: "bold", fontSize: 20, color: "white" }}
               >
-                Dogum tarihiniz :{date}
+               {runIt && (parseDate(date))}
               </Text>
             </View>
           )}
@@ -170,7 +179,7 @@ const RegisterFormScreen = (props) => {
           <TouchableOpacity
             style={style.nextPageButton}
             onPress={() => {
-              props.navigation.navigate("register");
+              props.navigation.navigate("instruction");
             }}
           >
             <Text style={style.buttonText}>Sonraki sayfa  </Text>

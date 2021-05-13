@@ -18,7 +18,7 @@ const StackNavigation=(props)=>{
             <Stack.Screen name="login" component={LoginScreen} options={{headerShown:false}}></Stack.Screen>
             <Stack.Screen name="register" component={RegisterFormScreen} options={{headerShown:false}}></Stack.Screen>
             <Stack.Screen name="accept" component={AcceptFormScreen} options={{}}></Stack.Screen>
-            <Stack.Screen name="instruction" component={InstructionScreen} options={{}}></Stack.Screen>
+            <Stack.Screen name="instruction" component={InstructionScreen} options={{headerShown:false}}></Stack.Screen>
             <Stack.Screen name="earOption" component={EarOptionScreen} options={{}}></Stack.Screen>
             <Stack.Screen name="listen" component={ListenScreen} options={{}}></Stack.Screen>
             <Stack.Screen name="question" component={QuestionScreen} options={{}}></Stack.Screen>
