@@ -19,13 +19,7 @@ const InstructionScreen = (props) => {
     extrapolate: 'clamp',
   });
   return (
-    <View
-      style={{
-        flex: 1,
-        flexDirection: 'column',
-        backgroundColor: 'transparent',
-      }}
-    >
+    <View style={{ alignItems: 'center', height: '100%' }}>
       <Animated.View style={{ height: headerScrollHeight }}>
         <CToolbar title='Talimatlar' onBackPress={props.navigation.goBack} />
       </Animated.View>

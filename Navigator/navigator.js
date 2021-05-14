@@ -27,7 +27,7 @@ const StackNavigation = (props) => {
       <Stack.Screen
         name='accept'
         component={AcceptFormScreen}
-        options={{}}
+        options={{headerShown:false}}
       ></Stack.Screen>
       <Stack.Screen
         name='instruction'
@@ -54,7 +54,7 @@ const StackNavigation = (props) => {
       <Stack.Screen
         name='result'
         component={ResultScreen}
-        options={{}}
+        options={{headerShown:false}}
       ></Stack.Screen>
     </Stack.Navigator>
   );
