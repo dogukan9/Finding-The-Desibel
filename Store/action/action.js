@@ -7,7 +7,7 @@ export const RESET_VALUES = 'RESET_VALUES';
 export const LEFTEAR = 'LEFTEAR';
 export const RIGHTEAR = 'RIGHTEAR';
 export const RIGHTSCORES = 'RIGHTSCORES';
-export const LEFTTSCORES = 'LEFTSCORES';
+export const LEFTSCORES = 'LEFTSCORES';
 export const heared = () => {
   return { type: HEARED };
 };
@@ -29,9 +29,9 @@ export const infos = (name, surname, sex, date, phone) => {
     type: INFOS,
     name: name,
     surname: surname,
-    date: date,
+    birthdate: date,
     gender: sex,
-    phone: phone,
+    phoneNumber: phone,
   };
 };
 
@@ -59,13 +59,13 @@ export const save = () => {
     const rightScores = getState().reducer.rightScores;
 
     console.log(
-      name,
-      surname,
-      gender,
-      birthdate,
-      phoneNumber,
-      leftScores,
-      rightScores
+      'Name' + name,
+      'Surname' + surname,
+      'Gender' + gender,
+      'Birtdate' + birthdate,
+      'number' + phoneNumber,
+      'left' + leftScores.map((x) => x.desibel),
+      'right' + rightScores.map((x) => x.desibel)
     );
     dispatch({ type: RESET_VALUES });
   };

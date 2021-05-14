@@ -36,8 +36,8 @@ const initialState = {
   phoneNumber: '',
   leftEar: false,
   rightEar: false,
-  leftScores: null,
-  rightScores: null,
+  leftScores: [],
+  rightScores: [],
 };
 
 export default function (state = initialState, action) {
@@ -67,13 +67,13 @@ export default function (state = initialState, action) {
     case LEFTSCORES:
       return {
         ...state,
-        leftScores: state.scores,
+        leftScores: state.desibels,
       };
 
     case RIGHTSCORES:
       return {
         ...state,
-        rightScores: state.scores,
+        rightScores: state.desibels,
       };
     case HEARED:
       const downDesibels = [...state.desibels];
