@@ -19,7 +19,9 @@ import {
   resetValues,
   saveLeft,
   saveRight,
+  save,
 } from '../../Store/action/action';
+
 import b from './b.gif';
 
 const ListenScreen = (props) => {
@@ -41,7 +43,6 @@ const ListenScreen = (props) => {
   //let rightEar = useSelector((state) => state.reducer.rightEar);
   let leftEar = props.route.params.leftEar;
   let rightEar = props.route.params.rightEar;
-  console.log('left ear=' + leftEar + ' right ear=' + rightEar);
 
   if (soundIndex >= 1) {
     dispatch(changeSoundToZero());
@@ -56,6 +57,8 @@ const ListenScreen = (props) => {
       props.navigation.navigate('earOption');
     }
     if (leftEar && rightEar) {
+      dispatch(save());
+      console.log('save');
       props.navigation.navigate('result');
     }
   }
@@ -67,9 +70,6 @@ const ListenScreen = (props) => {
   if (soundDesibel == 0 || soundDesibel == 95) {
     dispatch(changeSound());
   }
-
-  console.log(soundDesibel);
-  console.log('soundIndex=' + soundIndex);
 
   const convert_desibel_to_volumeFloat = (volume) => {
     const x =
