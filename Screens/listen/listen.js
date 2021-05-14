@@ -23,6 +23,8 @@ import {
 } from '../../Store/action/action';
 
 import b from './b.gif';
+let templeft = false;
+let tempright = false;
 const ListenScreen = (props) => {
   const wHeight = Dimensions.get('window').width;
   const H_MAX_HEIGHT = wHeight * 0.36;
@@ -43,19 +45,20 @@ const ListenScreen = (props) => {
   let leftEar = props.route.params.leftEar;
   let rightEar = props.route.params.rightEar;
 
-  if (soundIndex >= 1) {
+  if (soundIndex >= 3) {
     dispatch(changeSoundToZero());
     if (leftEar && !rightEar) {
       dispatch(saveLeft());
-      dispatch(resetValues());
+      templeft = true;
       props.navigation.navigate('earOption');
     }
     if (!leftEar && rightEar) {
       dispatch(saveRight());
-      dispatch(resetValues());
+      tempright = true;
       props.navigation.navigate('earOption');
     }
-    if (leftEar && rightEar) {
+
+    if (tempright && templeft) {
       dispatch(save());
       console.log('save');
       props.navigation.navigate('result');

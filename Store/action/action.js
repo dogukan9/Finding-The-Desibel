@@ -41,11 +41,19 @@ export const resetValues = () => {
 };
 
 export const saveLeft = () => {
-  return { type: LEFTSCORES };
+  return (dispatch) => {
+    dispatch({ type: LEFTSCORES });
+
+    dispatch(resetValues());
+  };
 };
 
 export const saveRight = () => {
-  return { type: RIGHTSCORES };
+  return (dispatch) => {
+    dispatch({ type: RIGHTSCORES });
+
+    dispatch(resetValues());
+  };
 };
 
 export const save = () => {
@@ -67,7 +75,7 @@ export const save = () => {
       'left' + leftScores.map((x) => x.desibel),
       'right' + rightScores.map((x) => x.desibel)
     );
-    dispatch({ type: RESET_VALUES });
+    dispatch({ type: 'bos' });
   };
 };
 export const leftEar = () => {
