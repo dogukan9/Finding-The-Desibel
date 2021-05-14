@@ -18,7 +18,6 @@ const H_MAX_HEIGHT = wHeight * 0.36;
 const H_MIN_HEIGHT = wHeight * 0.24;
 
 const RegisterFormScreen = (props) => {
-  const dispatch = useDispatch();
   const [name, setName] = React.useState('');
   const [surname, setSurname] = React.useState('');
   const [sex, setSex] = React.useState('Kadın');

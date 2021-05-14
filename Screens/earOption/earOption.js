@@ -51,7 +51,7 @@ const EarOptionScreen = (props) => {
               setLeftEar(true);
               //  dispatch(leftEar());
               props.navigation.navigate('listen', {
-                leftEar: leftEarr,
+                leftEar: true,
                 rightEar: rightEarr,
               });
             }}
@@ -78,7 +78,7 @@ const EarOptionScreen = (props) => {
               // dispatch(rightEar());
 
               props.navigation.navigate('listen', {
-                rightEar: rightEarr,
+                rightEar: true,
                 leftEar: leftEarr,
               });
             }}
