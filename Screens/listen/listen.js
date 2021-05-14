@@ -23,7 +23,6 @@ import {
 } from '../../Store/action/action';
 
 import b from './b.gif';
-
 const ListenScreen = (props) => {
   const wHeight = Dimensions.get('window').width;
   const H_MAX_HEIGHT = wHeight * 0.36;
