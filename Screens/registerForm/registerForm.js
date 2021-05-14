@@ -175,6 +175,7 @@ const RegisterFormScreen = (props) => {
         <TouchableOpacity
           style={style.nextPageButton}
           onPress={() => {
+            // name,surname,sex,date,phoneNumber
             props.navigation.navigate('accept');
           }}
         >
