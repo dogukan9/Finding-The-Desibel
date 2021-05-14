@@ -12,6 +12,7 @@ import CTextInput from '../../Components/CTextInput';
 import { style } from '../registerForm/style';
 import { RadioButton } from 'react-native-paper';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import {useDispatch} from "react-redux";
 const wHeight = Dimensions.get('window').width;
 const H_MAX_HEIGHT = wHeight * 0.36;
 const H_MIN_HEIGHT = wHeight * 0.24;
