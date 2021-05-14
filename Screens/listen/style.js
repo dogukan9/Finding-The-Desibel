@@ -35,4 +35,10 @@ export const style = StyleSheet.create({
     color: 'blue',
     textAlign: 'center',
   },
+  bar: {
+    width: '100%',
+    height: '100%',
+    justifyContent: "center",
+    alignItems: "center",
+},
 });

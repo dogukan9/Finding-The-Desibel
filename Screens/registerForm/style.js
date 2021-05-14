@@ -6,7 +6,7 @@ export const style = StyleSheet.create({
     alignContent: "center"
   },
   label: {
-    color: "white",
+    color: "black",
     marginTop: "5%",
     marginHorizontal: "5%",
     fontSize: 20,
@@ -20,7 +20,7 @@ export const style = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 20,
-    backgroundColor: "white",
+    backgroundColor: "#2196F3",
     shadowColor: "#000",
     shadowOffset: {
       width: 2,
@@ -36,7 +36,7 @@ export const style = StyleSheet.create({
     marginVertical: 10,
     padding: "3%",
     fontSize: 20,
-    color: "#2196F3",
+    color: "white",
     fontWeight: "bold",
   },
   nextPageButton:{
@@ -47,7 +47,7 @@ export const style = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 20,
-    backgroundColor: "white",
+    backgroundColor: "#2196F3",
     shadowColor: "#000",
     shadowOffset: {
       width: 2,

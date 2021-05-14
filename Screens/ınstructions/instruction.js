@@ -14,11 +14,7 @@ const InstructionScreen = (props) => {
   });
   return (
     <View
-      style={{
-        flex: 1,
-        flexDirection: "column",
-        backgroundColor: "transparent",
-      }}
+    style={{ alignItems: "center", height: "100%" }}
     >
       <Animated.View style={{ height: headerScrollHeight }}>
         <CToolbar title="Talimatlar" onBackPress={props.navigation.goBack} />

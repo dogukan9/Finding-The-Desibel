@@ -6,24 +6,13 @@ import {
   Animated,
   Dimensions,
   TouchableOpacity,
-<<<<<<< HEAD
 } from "react-native";
 import CToolbar from "../../Components/CToolBar";
 import CTextInput from "../../Components/CTextInput";
 import { style } from "../registerForm/style";
 import { RadioButton } from "react-native-paper";
 import DateTimePicker from "@react-native-community/datetimepicker";
-const wHeight = Dimensions.get("window").width;
-=======
-  FlatList,
-} from 'react-native';
-import CToolbar from '../../Components/CToolBar';
-import CTextInput from '../../Components/CTextInput';
-import { style } from '../registerForm/style';
-import { RadioButton } from 'react-native-paper';
-import DateTimePicker from '@react-native-community/datetimepicker';
 const wHeight = Dimensions.get('window').width;
->>>>>>> 0c2d5b76d138a0ffb09dadee727a9a7429ed211a
 const H_MAX_HEIGHT = wHeight * 0.36;
 const H_MIN_HEIGHT = wHeight * 0.24;
 const RegisterFormScreen = (props) => {
@@ -57,14 +46,14 @@ const RegisterFormScreen = (props) => {
     setMode(currentMode);
   };
 
-  const showDatepicker = async () => {
-    await showMode('date');
+  const showDatepicker =  () => {
+    showMode('date');
     setShowDate(true);
   };
 
   const parseDate=(str)=>{
     const datee=new Date(Date.parse(str));
-    console.log(datee);
+    console.log(datee.getFullYear());
     var dd = String(datee.getDate()).padStart(2, "0");
     var mm = String(datee.getMonth() + 1).padStart(2, "0"); //January is 0!
     var yyyy = datee.getFullYear();
@@ -72,11 +61,7 @@ const RegisterFormScreen = (props) => {
   }
   return (
     <View
-      style={{
-        flex: 1,
-        flexDirection: 'column',
-        backgroundColor: '#2196F3',
-      }}
+    style={{ alignItems: "center", height: "100%" }}
     >
       <Animated.View style={{ height: headerScrollHeight }}>
         <CToolbar
@@ -124,14 +109,14 @@ const RegisterFormScreen = (props) => {
               fontWeight: 'bold',
               fontSize: 20,
               marginTop: '2%',
-              color: 'white',
+              color: 'black',
             }}
           >
             Kadın
           </Text>
           <RadioButton
             value='Kadın'
-            color='white'
+            color='#2196F3'
             status={sex === 'Kadın' ? 'checked' : 'unchecked'}
             onPress={() => setSex('Kadın')}
           />
@@ -140,14 +125,14 @@ const RegisterFormScreen = (props) => {
               fontWeight: 'bold',
               fontSize: 20,
               marginTop: '2%',
-              color: 'white',
+              color: 'black',
             }}
           >
             Erkek
           </Text>
           <RadioButton
             value='Erkek'
-            color='white'
+            color='#2196F3'
             status={sex === 'Erkek' ? 'checked' : 'unchecked'}
             onPress={() => setSex('Erkek')}
           />
@@ -179,7 +164,7 @@ const RegisterFormScreen = (props) => {
               }}
             >
               <Text
-                style={{ fontWeight: 'bold', fontSize: 20, color: 'white' }}
+                style={{ fontWeight: 'bold', fontSize: 20, color: 'black' }}
               >
                {runIt && (parseDate(date))}
               </Text>
@@ -190,10 +175,10 @@ const RegisterFormScreen = (props) => {
           <TouchableOpacity
             style={style.nextPageButton}
             onPress={() => {
-              props.navigation.navigate("instruction");
+              props.navigation.navigate("accept");
             }}
           >
-            <Text>
+            <Text style={style.buttonText}>
             Sonraki sayfa
           </Text>
         </TouchableOpacity>
