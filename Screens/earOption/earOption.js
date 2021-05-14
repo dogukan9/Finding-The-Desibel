@@ -16,9 +16,9 @@ const EarOptionScreen = (props) => {
   const dispatch = useDispatch();
   let left = useSelector((state) => state.reducer.leftEar);
   let right = useSelector((state) => state.reducer.rightEar);
-  useEffect(() => {
+  /*useEffect(() => {
     dispatch(resetValues());
-  }, []);
+  }, []);*/
   const [leftEarr, setLeftEar] = React.useState(false);
   const [rightEarr, setRightEar] = React.useState(false);
 
@@ -52,7 +52,7 @@ const EarOptionScreen = (props) => {
               //  dispatch(leftEar());
               props.navigation.navigate('listen', {
                 leftEar: true,
-                rightEar: rightEarr,
+                rightEar: false,
               });
             }}
           >
@@ -79,7 +79,7 @@ const EarOptionScreen = (props) => {
 
               props.navigation.navigate('listen', {
                 rightEar: true,
-                leftEar: leftEarr,
+                leftEar: false,
               });
             }}
           >

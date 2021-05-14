@@ -19,14 +19,6 @@ const initialState = {
     { desibel: 50 },
     { desibel: 50 },
   ],
-  scores: [
-    { score: 0 },
-    { score: 0 },
-    { score: 0 },
-    { score: 0 },
-    { score: 0 },
-    { score: 0 },
-  ],
 
   soundIndex: 0,
   name: '',
@@ -42,6 +34,10 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
+    case 'bos':
+      return {
+        ...state,
+      };
     case RESET_VALUES:
       return {
         ...state,
@@ -53,14 +49,7 @@ export default function (state = initialState, action) {
           { desibel: 50 },
           { desibel: 50 },
         ],
-        scores: [
-          { score: 0 },
-          { score: 0 },
-          { score: 0 },
-          { score: 0 },
-          { score: 0 },
-          { score: 0 },
-        ],
+
         soundIndex: 0,
       };
 
