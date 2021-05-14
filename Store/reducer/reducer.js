@@ -42,7 +42,7 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case RESET_VALUES: {
+    case RESET_VALUES:
       return {
         ...state,
         desibels: [
@@ -63,7 +63,7 @@ export default function (state = initialState, action) {
         ],
         soundIndex: 0,
       };
-    }
+
     case LEFTSCORES:
       return {
         ...state,
