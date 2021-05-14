@@ -6,15 +6,6 @@ import {
   Animated,
   Dimensions,
   TouchableOpacity,
-<<<<<<< HEAD
-} from "react-native";
-import CToolbar from "../../Components/CToolBar";
-import CTextInput from "../../Components/CTextInput";
-import { style } from "../registerForm/style";
-import { RadioButton } from "react-native-paper";
-import DateTimePicker from "@react-native-community/datetimepicker";
-const wHeight = Dimensions.get("window").width;
-=======
   FlatList,
 } from 'react-native';
 import CToolbar from '../../Components/CToolBar';
@@ -22,11 +13,14 @@ import CTextInput from '../../Components/CTextInput';
 import { style } from '../registerForm/style';
 import { RadioButton } from 'react-native-paper';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import { useDispatch } from 'react-redux';
+import { giveInfos } from '../../Store/action/action';
 const wHeight = Dimensions.get('window').width;
->>>>>>> 0c2d5b76d138a0ffb09dadee727a9a7429ed211a
 const H_MAX_HEIGHT = wHeight * 0.36;
 const H_MIN_HEIGHT = wHeight * 0.24;
+
 const RegisterFormScreen = (props) => {
+  const dispatch = useDispatch();
   const [name, setName] = React.useState('');
   const [surname, setSurname] = React.useState('');
   const [sex, setSex] = React.useState('Kadın');
@@ -46,10 +40,10 @@ const RegisterFormScreen = (props) => {
 
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate || date;
-    setShow(Platform.OS === "ios");
-    console.log("here :"+ currentDate);
+    setShow(Platform.OS === 'ios');
+    console.log('here :' + currentDate);
     setDate(currentDate);
-    setRunIt(true)
+    setRunIt(true);
   };
 
   const showMode = (currentMode) => {
@@ -62,14 +56,14 @@ const RegisterFormScreen = (props) => {
     setShowDate(true);
   };
 
-  const parseDate=(str)=>{
-    const datee=new Date(Date.parse(str));
+  const parseDate = (str) => {
+    const datee = new Date(Date.parse(str));
     console.log(datee);
-    var dd = String(datee.getDate()).padStart(2, "0");
-    var mm = String(datee.getMonth() + 1).padStart(2, "0"); //January is 0!
+    var dd = String(datee.getDate()).padStart(2, '0');
+    var mm = String(datee.getMonth() + 1).padStart(2, '0'); //January is 0!
     var yyyy = datee.getFullYear();
-    return "Dogum tarihiniz :"+dd+"."+mm+"."+yyyy;
-  }
+    return 'Dogum tarihiniz :' + dd + '.' + mm + '.' + yyyy;
+  };
   return (
     <View
       style={{
@@ -181,21 +175,20 @@ const RegisterFormScreen = (props) => {
               <Text
                 style={{ fontWeight: 'bold', fontSize: 20, color: 'white' }}
               >
-               {runIt && (parseDate(date))}
+                {runIt && parseDate(date)}
               </Text>
             </View>
           )}
         </View>
-        
-          <TouchableOpacity
-            style={style.nextPageButton}
-            onPress={() => {
-              props.navigation.navigate("instruction");
-            }}
-          >
-            <Text>
-            Sonraki sayfa
-          </Text>
+
+        <TouchableOpacity
+          style={style.nextPageButton}
+          onPress={() => {
+            dispatch(giveInfos(name, surname, date, sex, phone));
+            props.navigation.navigate('instruction');
+          }}
+        >
+          <Text>Sonraki sayfa</Text>
         </TouchableOpacity>
       </ScrollView>
     </View>

@@ -4,6 +4,8 @@ export const CHANGE_SOUND = 'CHANGE_SOUND';
 export const CHANGE_SOUND_TO_ZERO = 'CHANGE_SOUND_TO_ZERO';
 export const INFOS = 'INFOS';
 export const RESET_VALUES = 'RESET_VALUES';
+export const LEFTEAR = 'LEFTEAR';
+export const RIGHTEAR = 'RIGHTEAR';
 export const heared = () => {
   return { type: HEARED };
 };
@@ -20,16 +22,32 @@ export const changeSoundToZero = () => {
   return { type: CHANGE_SOUND_TO_ZERO };
 };
 
-export const giveInfos = (name, surname, age, gender) => {
+export const giveInfos = (name, surname, date, gender, phone) => {
   return {
-    type: UNHEARED,
+    type: INFOS,
     name: name,
     surname: surname,
-    age: age,
+    date: date,
     gender: gender,
+    phone: phone,
   };
 };
 
 export const resetValues = () => {
+  console.log('reset');
   return { type: RESET_VALUES };
+};
+
+export const saveLeft = () => {
+  return { type: RESET_VALUES };
+};
+export const saveRight = () => {
+  return { type: RESET_VALUES };
+};
+
+export const leftEar = () => {
+  return { type: LEFTEAR };
+};
+export const rightEar = () => {
+  return { type: RIGHTEAR };
 };

@@ -21,6 +21,7 @@ export const style = StyleSheet.create({
     width: 200,
     padding: 10,
   },
+
   button: {
     backgroundColor: 'white',
     padding: 45,
@@ -29,6 +30,13 @@ export const style = StyleSheet.create({
     borderColor: 'white',
 
     borderRadius: 70,
+  },
+  image: {
+    borderRadius: 70,
+
+    height: 110,
+    justifyContent: 'center',
+    overflow: 'hidden',
   },
   text: {
     fontSize: 25,

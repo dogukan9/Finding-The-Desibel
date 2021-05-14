@@ -5,6 +5,8 @@ import {
   CHANGE_SOUND_TO_ZERO,
   INFOS,
   RESET_VALUES,
+  RIGHTEAR,
+  LEFTEAR,
 } from '../action/action';
 const initialState = {
   desibels: [
@@ -23,18 +25,37 @@ const initialState = {
     { score: 0 },
     { score: 0 },
   ],
+  desibelsRight: [
+    { desibel: 50 },
+    { desibel: 50 },
+    { desibel: 50 },
+    { desibel: 50 },
+    { desibel: 50 },
+    { desibel: 50 },
+  ],
+  scoresRight: [
+    { score: 0 },
+    { score: 0 },
+    { score: 0 },
+    { score: 0 },
+    { score: 0 },
+    { score: 0 },
+  ],
   soundIndex: 0,
   name: '',
   surname: '',
-  age: '',
+  date: '',
   gender: '',
+  phone: '',
+  leftEar: false,
+  rightEar: false,
 };
 
 export default function (state = initialState, action) {
   switch (action.type) {
     case RESET_VALUES: {
       return {
-        ...states,
+        ...state,
         desibels: [
           { desibel: 50 },
           { desibel: 50 },
@@ -57,8 +78,10 @@ export default function (state = initialState, action) {
 
     case HEARED:
       const downDesibels = [...state.desibels];
-      const downDesibel = downDesibels[soundIndex].desibel - 10;
-      downDesibels[soundIndex] = downDesibel;
+      // console.log(downDesibels);
+      const downDesibel = downDesibels[state.soundIndex].desibel - 10;
+      //   console.log(downDesibel);
+      downDesibels[state.soundIndex].desibel = downDesibel;
       return {
         ...state,
         desibels: downDesibels,
@@ -66,17 +89,19 @@ export default function (state = initialState, action) {
 
     case UNHEARED:
       const upDesibels = [...state.desibels];
-      const upDesibel = upDesibels[soundIndex].desibel + 5;
-      upDesibels[soundIndex] = upDesibel;
+      const upDesibel = upDesibels[state.soundIndex].desibel + 5;
+      upDesibels[state.soundIndex].desibel = upDesibel;
       return {
         ...state,
         desibels: upDesibels,
       };
 
     case CHANGE_SOUND:
+      const index = state.soundIndex + 1;
+      console.log(index);
       return {
         ...state,
-        soundIndex: state.soundIndex + 1,
+        soundIndex: index,
       };
 
     case CHANGE_SOUND_TO_ZERO:
@@ -89,10 +114,21 @@ export default function (state = initialState, action) {
         ...state,
         name: action.name,
         surname: action.surname,
-        age: action.age,
+        date: action.date,
         gender: action.gender,
+        phone: action.phone,
       };
     }
+    case LEFTEAR:
+      return {
+        ...state,
+        leftEar: true,
+      };
+    case RIGHTEAR:
+      return {
+        ...state,
+        rightEar: true,
+      };
     default:
       return state;
   }

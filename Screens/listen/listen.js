@@ -5,28 +5,71 @@ import {
   TouchableOpacity,
   Animated,
   Dimensions,
+  Image,
 } from 'react-native';
 import { style } from './style';
 import { LinearGradient } from 'expo-linear-gradient';
 import CToolbar from '../../Components/CToolBar';
 import { Audio } from 'expo-av';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { SOUNDS } from '../../Data/data';
+import {
+  changeSound,
+  changeSoundToZero,
+  resetValues,
+  saveLeft,
+  saveRight,
+} from '../../Store/action/action';
+import b from './b.gif';
+
 const ListenScreen = (props) => {
   const wHeight = Dimensions.get('window').width;
   const H_MAX_HEIGHT = wHeight * 0.36;
   const H_MIN_HEIGHT = wHeight * 0.24;
   const scrollOffsetY = React.useRef(new Animated.Value(1)).current;
+  const [show, setShow] = React.useState(true);
   const headerScrollHeight = scrollOffsetY.interpolate({
     inputRange: [0, 1],
     outputRange: [H_MAX_HEIGHT, H_MIN_HEIGHT],
     extrapolate: 'clamp',
   });
   let sound;
-  const soundIndex = useSelector((state) => state.reducer.soundIndex);
+  const dispatch = useDispatch();
+
+  let soundIndex = useSelector((state) => state.reducer.soundIndex);
+  //let leftEar = useSelector((state) => state.reducer.leftEar);
+  //let rightEar = useSelector((state) => state.reducer.rightEar);
+  let leftEar = props.route.params.leftEarr;
+  let rightEar = props.route.params.rightEarr;
+  console.log('left ear=' + leftEar + ' right ear=' + rightEar);
+
+  if (soundIndex >= 6) {
+    dispatch(changeSoundToZero());
+    if (leftEarr && !rightEarr) {
+      dispatch(saveLeft());
+      dispatch(resetValues());
+    }
+    if (!leftEarr && rightEarr) {
+      dispatch(saveRight());
+      dispatch(resetValues());
+    }
+    if (left && right) {
+      props.navigation.navigate('result');
+    }
+    props.navigation.navigate('earOption');
+  }
+  soundIndex = useSelector((state) => state.reducer.soundIndex);
+
   const soundDesibel = useSelector(
     (state) => state.reducer.desibels[soundIndex].desibel
   );
+  if (soundDesibel == 0 || soundDesibel == 95) {
+    dispatch(changeSound());
+  }
+
+  console.log(soundDesibel);
+  console.log('soundIndex=' + soundIndex);
+
   const convert_desibel_to_volumeFloat = (volume) => {
     const x =
       volume != 100 ? 1 - Math.log(100 - volume) / Math.log(100.0) : 1065353216;
@@ -36,6 +79,7 @@ const ListenScreen = (props) => {
 
   async function playSound() {
     const y = convert_desibel_to_volumeFloat(soundDesibel);
+
     sound = await Audio.Sound.createAsync(SOUNDS[soundIndex].ses, {
       shouldPlay: true,
       volume: y,
@@ -43,10 +87,8 @@ const ListenScreen = (props) => {
 
     setTimeout(() => {
       sound.sound.unloadAsync();
-
-      props.navigation.navigate({
-        routeName: 'question',
-      });
+      setShow((prev) => !prev);
+      props.navigation.navigate('question');
     }, sound.status.durationMillis);
   }
 
@@ -81,9 +123,19 @@ const ListenScreen = (props) => {
             style={style.radius}
             onPress={() => {
               playSound();
+              setShow((prev) => !prev);
             }}
           >
-            <Text style={style.text}>Dinlemek için tıklayın</Text>
+            {show ? (
+              <Text style={style.text}>Dinlemek için tıklayın</Text>
+            ) : (
+              <View style={style.image}>
+                <Image
+                  source={require('./a.gif')}
+                  style={{ height: 110, width: 280 }}
+                />
+              </View>
+            )}
           </TouchableOpacity>
         </LinearGradient>
       </View>
