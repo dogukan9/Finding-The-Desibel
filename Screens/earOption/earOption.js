@@ -44,14 +44,14 @@ const EarOptionScreen = (props) => {
         <CToolbar title='EAR OPTION' onBackPress={props.navigation.goBack} />
       </Animated.View>
       <View style={style.container}>
-        {leftEarr ? (
+        {!leftEarr ? (
           <TouchableOpacity
             style={style.buton}
             onPress={() => {
               setLeftEar(true);
               //  dispatch(leftEar());
               props.navigation.navigate('listen', {
-                leftEar: leftEarr,
+                leftEar: true,
                 rightEar: rightEarr,
               });
             }}
@@ -70,7 +70,7 @@ const EarOptionScreen = (props) => {
             SOL KULAK TESTİ BİTTİ
           </Text>
         )}
-        {rightEarr ? (
+        {!rightEarr ? (
           <TouchableOpacity
             style={style.buton}
             onPress={() => {
@@ -78,7 +78,7 @@ const EarOptionScreen = (props) => {
               // dispatch(rightEar());
 
               props.navigation.navigate('listen', {
-                rightEar: rightEarr,
+                rightEar: true,
                 leftEar: leftEarr,
               });
             }}

@@ -39,24 +39,25 @@ const ListenScreen = (props) => {
   let soundIndex = useSelector((state) => state.reducer.soundIndex);
   //let leftEar = useSelector((state) => state.reducer.leftEar);
   //let rightEar = useSelector((state) => state.reducer.rightEar);
-  let leftEar = props.route.params.leftEarr;
-  let rightEar = props.route.params.rightEarr;
+  let leftEar = props.route.params.leftEar;
+  let rightEar = props.route.params.rightEar;
   console.log('left ear=' + leftEar + ' right ear=' + rightEar);
 
-  if (soundIndex >= 6) {
+  if (soundIndex >= 1) {
     dispatch(changeSoundToZero());
-    if (leftEarr && !rightEarr) {
+    if (leftEar && !rightEar) {
       dispatch(saveLeft());
       dispatch(resetValues());
+      props.navigation.navigate('earOption');
     }
-    if (!leftEarr && rightEarr) {
+    if (!leftEar && rightEar) {
       dispatch(saveRight());
       dispatch(resetValues());
+      props.navigation.navigate('earOption');
     }
-    if (left && right) {
+    if (leftEar && rightEar) {
       props.navigation.navigate('result');
     }
-    props.navigation.navigate('earOption');
   }
   soundIndex = useSelector((state) => state.reducer.soundIndex);
 
