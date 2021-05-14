@@ -1,14 +1,12 @@
 import React from "react";
 import { View, Text, Animated, Dimensions } from "react-native";
-import { LineChart, PieChart } from "react-native-chart-kit";
-import {style} from "./style";
+import { LineChart } from "react-native-chart-kit";
+import { style } from "./style";
 import CToolBar from "../../Components/CToolBar";
 import {
   Table,
   Row,
   Rows,
-  Col,
-  TableWrapper,
 } from "react-native-table-component";
 import { ScrollView } from "react-native";
 const ResultScreen = (props) => {
@@ -41,18 +39,10 @@ const ResultScreen = (props) => {
     ],
   };
 
-  const tableHeader = [
-      "~fHZ"
-,    "250",
-    "500",
-    "1000",
-    "2000",
-    "4000",
-    "8000",
-  ];
+  const tableHeader = ["~fHZ", "250", "500", "1000", "2000", "4000", "8000"];
   const tableDatas = [
-    ["Sağ kulak", "40", "18", "58","30","60","80"],
-    ["Sol kulak", "40", "18", "58","30","60","80"],
+    ["Sağ kulak", "40", "18", "58", "30", "60", "80"],
+    ["Sol kulak", "40", "18", "58", "30", "60", "80"],
   ];
   return (
     <View style={{ alignItems: "center", height: "100%" }}>
@@ -71,9 +61,7 @@ const ResultScreen = (props) => {
           İşitme testi sonuçlarınız
         </Text>
       </View>
-      <ScrollView 
-       
-      >
+      <ScrollView>
         <View
           style={{
             flexDirection: "row",
@@ -100,8 +88,8 @@ const ResultScreen = (props) => {
           backgroundColor="transparent"
           paddingLeft="15"
         />
-        <View style={{ margin: "1%" }}></View>
-        
+        <View style={{ margin: "2%" }}></View>
+
         <Table style={style.table}>
           <Row
             data={tableHeader}
