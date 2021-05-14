@@ -19,7 +19,9 @@ import {
   resetValues,
   saveLeft,
   saveRight,
+  save,
 } from '../../Store/action/action';
+
 import b from './b.gif';
 
 const ListenScreen = (props) => {
@@ -43,7 +45,7 @@ const ListenScreen = (props) => {
   let rightEar = props.route.params.rightEar;
   console.log('left ear=' + leftEar + ' right ear=' + rightEar);
 
-  if (soundIndex >= 1) {
+  if (soundIndex >= 6) {
     dispatch(changeSoundToZero());
     if (leftEar && !rightEar) {
       dispatch(saveLeft());
@@ -56,6 +58,7 @@ const ListenScreen = (props) => {
       props.navigation.navigate('earOption');
     }
     if (leftEar && rightEar) {
+      dispatch(save());
       props.navigation.navigate('result');
     }
   }

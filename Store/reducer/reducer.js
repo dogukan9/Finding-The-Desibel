@@ -7,6 +7,8 @@ import {
   RESET_VALUES,
   RIGHTEAR,
   LEFTEAR,
+  LEFTSCORES,
+  RIGHTSCORES,
 } from '../action/action';
 const initialState = {
   desibels: [
@@ -25,30 +27,17 @@ const initialState = {
     { score: 0 },
     { score: 0 },
   ],
-  desibelsRight: [
-    { desibel: 50 },
-    { desibel: 50 },
-    { desibel: 50 },
-    { desibel: 50 },
-    { desibel: 50 },
-    { desibel: 50 },
-  ],
-  scoresRight: [
-    { score: 0 },
-    { score: 0 },
-    { score: 0 },
-    { score: 0 },
-    { score: 0 },
-    { score: 0 },
-  ],
+
   soundIndex: 0,
   name: '',
   surname: '',
-  date: '',
+  birthdate: '',
   gender: '',
-  phone: '',
+  phoneNumber: '',
   leftEar: false,
   rightEar: false,
+  leftScores: null,
+  rightScores: null,
 };
 
 export default function (state = initialState, action) {
@@ -75,7 +64,17 @@ export default function (state = initialState, action) {
         soundIndex: 0,
       };
     }
+    case LEFTSCORES:
+      return {
+        ...state,
+        leftScores: state.scores,
+      };
 
+    case RIGHTSCORES:
+      return {
+        ...state,
+        rightScores: state.scores,
+      };
     case HEARED:
       const downDesibels = [...state.desibels];
       // console.log(downDesibels);
@@ -114,9 +113,9 @@ export default function (state = initialState, action) {
         ...state,
         name: action.name,
         surname: action.surname,
-        date: action.date,
+        birthdate: action.birthdate,
         gender: action.gender,
-        phone: action.phone,
+        phoneNumber: action.phoneNumber,
       };
     }
     case LEFTEAR:

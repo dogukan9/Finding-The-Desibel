@@ -12,11 +12,14 @@ import CTextInput from '../../Components/CTextInput';
 import { style } from '../registerForm/style';
 import { RadioButton } from 'react-native-paper';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import { useDispatch } from 'react-redux';
+import { infos } from '../../Store/action/action';
 const wHeight = Dimensions.get('window').width;
 const H_MAX_HEIGHT = wHeight * 0.36;
 const H_MIN_HEIGHT = wHeight * 0.24;
 
 const RegisterFormScreen = (props) => {
+  const dispatch = useDispatch();
   const [name, setName] = React.useState('');
   const [surname, setSurname] = React.useState('');
   const [sex, setSex] = React.useState('Kadın');
@@ -174,6 +177,7 @@ const RegisterFormScreen = (props) => {
         <TouchableOpacity
           style={style.nextPageButton}
           onPress={() => {
+            dispatch(infos(name, surname, sex, date, phone));
             props.navigation.navigate('accept');
           }}
         >
