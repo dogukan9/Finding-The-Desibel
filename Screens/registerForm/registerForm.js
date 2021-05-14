@@ -12,12 +12,8 @@ import CTextInput from '../../Components/CTextInput';
 import { style } from '../registerForm/style';
 import { RadioButton } from 'react-native-paper';
 import DateTimePicker from '@react-native-community/datetimepicker';
-<<<<<<< HEAD
-import {useDispatch} from "react-redux";
-=======
 import { useDispatch } from 'react-redux';
 import { infos } from '../../Store/action/action';
->>>>>>> cfe4f7e54906a3bdabc674894ab5df4c2a334608
 const wHeight = Dimensions.get('window').width;
 const H_MAX_HEIGHT = wHeight * 0.36;
 const H_MIN_HEIGHT = wHeight * 0.24;
@@ -181,11 +177,7 @@ const RegisterFormScreen = (props) => {
         <TouchableOpacity
           style={style.nextPageButton}
           onPress={() => {
-<<<<<<< HEAD
-            // name,surname,sex,date,phoneNumber
-=======
             dispatch(infos(name, surname, sex, date, phone));
->>>>>>> cfe4f7e54906a3bdabc674894ab5df4c2a334608
             props.navigation.navigate('accept');
           }}
         >
