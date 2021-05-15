@@ -41,7 +41,7 @@ const ListenScreen = (props) => {
   let leftEar = props.route.params.leftEar;
   let rightEar = props.route.params.rightEar;
 
-  if (soundIndex >= 6) {
+  if (soundIndex >= 1) {
     dispatch(changeSoundToZero());
     if (leftEar && !rightEar) {
       dispatch(saveLeft());
@@ -65,7 +65,7 @@ const ListenScreen = (props) => {
   const soundDesibel = useSelector(
     (state) => state.reducer.desibels[soundIndex].desibel
   );
-  if (soundDesibel == 0 || soundDesibel == 95) {
+  if (soundDesibel == 0 || soundDesibel == 90) {
     dispatch(changeSound());
   }
 
