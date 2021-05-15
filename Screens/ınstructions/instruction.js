@@ -21,7 +21,7 @@ const InstructionScreen = (props) => {
   return (
     <View style={{ alignItems: 'center', height: '100%' }}>
       <Animated.View style={{ height: headerScrollHeight }}>
-        <CToolbar title='Talimatlar' onBackPress={props.navigation.goBack} />
+        <CToolbar title='TALİMATLAR' onBackPress={props.navigation.goBack} />
       </Animated.View>
       <View style={style.card}>
         <View>

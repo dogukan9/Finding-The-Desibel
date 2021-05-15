@@ -97,7 +97,7 @@ export default function (state = initialState, action) {
     case CHANGE_SOUND_TO_ZERO:
       return {
         ...state,
-        soundIndex: 0,
+        soundIndex: -1,
       };
     case INFOS: {
       return {

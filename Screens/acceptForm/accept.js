@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   View,
   Text,
@@ -6,10 +6,10 @@ import {
   ScrollView,
   Animated,
   Dimensions,
-} from "react-native";
-import { CheckBox } from "react-native-elements";
-import CToolbar from "../../Components/CToolBar";
-const wHeight = Dimensions.get("window").width;
+} from 'react-native';
+import { CheckBox } from 'react-native-elements';
+import CToolbar from '../../Components/CToolBar';
+const wHeight = Dimensions.get('window').width;
 const H_MAX_HEIGHT = wHeight * 0.36;
 const H_MIN_HEIGHT = wHeight * 0.24;
 const AcceptFormScreen = (props) => {
@@ -18,21 +18,21 @@ const AcceptFormScreen = (props) => {
   const headerScrollHeight = scrollOffsetY.interpolate({
     inputRange: [0, 1],
     outputRange: [H_MAX_HEIGHT, H_MIN_HEIGHT],
-    extrapolate: "clamp",
+    extrapolate: 'clamp',
   });
   return (
-    <View style={{ alignItems: "center", height: "100%" }}>
+    <View style={{ alignItems: 'center', height: '100%' }}>
       <Animated.View style={{ height: headerScrollHeight }}>
         <CToolbar
-          title="Hasta Kayıt Ekranı"
+          title='SÖZLEŞME KABUL FORMU'
           onBackPress={props.navigation.goBack}
         />
       </Animated.View>
-      <ScrollView style={{ backgroundColor: "white" }}>
+      <ScrollView style={{ backgroundColor: 'white' }}>
         <Text
           style={{
-            fontWeight: "bold",
-            textAlign: "center",
+            fontWeight: 'bold',
+            textAlign: 'center',
             fontSize: 24,
             paddingVertical: 2,
           }}
@@ -43,7 +43,7 @@ const AcceptFormScreen = (props) => {
         <View>
           <Text
             style={{
-              fontWeight: "bold",
+              fontWeight: 'bold',
               fontSize: 16,
               paddingVertical: 3,
               margin: 3,
@@ -72,7 +72,7 @@ const AcceptFormScreen = (props) => {
         <View>
           <Text
             style={{
-              fontWeight: "bold",
+              fontWeight: 'bold',
               fontSize: 16,
               paddingVertical: 3,
               margin: 3,
@@ -106,7 +106,7 @@ const AcceptFormScreen = (props) => {
         <View>
           <Text
             style={{
-              fontWeight: "bold",
+              fontWeight: 'bold',
               fontSize: 16,
               paddingVertical: 3,
               margin: 3,
@@ -128,7 +128,7 @@ const AcceptFormScreen = (props) => {
         <View>
           <Text
             style={{
-              fontWeight: "bold",
+              fontWeight: 'bold',
               fontSize: 16,
               paddingVertical: 3,
               margin: 3,
@@ -156,17 +156,17 @@ const AcceptFormScreen = (props) => {
         </View>
 
         <CheckBox
-          title="Sözleşmeyi Okudum Anladım"
+          title='Sözleşmeyi Okudum Anladım'
           checked={!okay}
           onPress={() => setOkay(!okay)}
         />
 
         <Button
-          title="Devam Et"
-          color="#2196F3"
+          title='Devam Et'
+          color='#2196F3'
           disabled={okay}
           onPress={() => {
-            props.navigation.navigate("instruction");
+            props.navigation.navigate('instruction');
           }}
         />
       </ScrollView>

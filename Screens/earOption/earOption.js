@@ -16,9 +16,9 @@ const EarOptionScreen = (props) => {
   const dispatch = useDispatch();
   let left = useSelector((state) => state.reducer.leftEar);
   let right = useSelector((state) => state.reducer.rightEar);
-  /*useEffect(() => {
+  useEffect(() => {
     dispatch(resetValues());
-  }, []);*/
+  }, []);
   const [leftEarr, setLeftEar] = React.useState(false);
   const [rightEarr, setRightEar] = React.useState(false);
 
@@ -41,7 +41,10 @@ const EarOptionScreen = (props) => {
       }}
     >
       <Animated.View style={{ height: headerScrollHeight }}>
-        <CToolbar title='EAR OPTION' onBackPress={props.navigation.goBack} />
+        <CToolbar
+          title='SAĞ VEL SOL KULAK TESİ'
+          onBackPress={props.navigation.goBack}
+        />
       </Animated.View>
       <View style={style.container}>
         {!leftEarr ? (

@@ -65,7 +65,7 @@ const ListenScreen = (props) => {
   const soundDesibel = useSelector(
     (state) => state.reducer.desibels[soundIndex].desibel
   );
-  if (soundDesibel == 0 || soundDesibel == 95) {
+  if (soundDesibel == 0 || soundDesibel == 90) {
     dispatch(changeSound());
   }
 
@@ -101,7 +101,7 @@ const ListenScreen = (props) => {
     >
       <Animated.View style={{ height: headerScrollHeight }}>
         <CToolbar
-          title='Dinleme Ekranı'
+          title='DİNLEME EKRANI'
           onBackPress={props.navigation.goBack}
         />
       </Animated.View>
