@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Animated, Dimensions } from "react-native";
+import { View, Text, Animated, Dimensions,ScrollView } from "react-native";
 import { LineChart } from "react-native-chart-kit";
 import { style } from "./style";
 import CToolBar from "../../Components/CToolBar";
@@ -8,8 +8,22 @@ import {
   Row,
   Rows,
 } from "react-native-table-component";
-import { ScrollView } from "react-native";
+
+import { useSelector, useDispatch } from 'react-redux';
+let rD=[];
+let lD=[];
 const ResultScreen = (props) => {
+  let leftEar = useSelector((state) => state.reducer.leftScores);
+  let rightEar = useSelector((state) => state.reducer.rightScores);
+
+  
+    leftEar.map(r=>{
+      lD.push(r.desibel);
+    })
+    rightEar.map(r=>{
+      rD.push(r.desibel);
+    })
+  
   const wHeight = Dimensions.get("window").width;
   const H_MAX_HEIGHT = wHeight * 0.36;
   const H_MIN_HEIGHT = wHeight * 0.24;
@@ -26,23 +40,23 @@ const ResultScreen = (props) => {
   };
   const screenWidth = Dimensions.get("window").width;
   const data = {
-    labels: ["250Hz", "500Hz", "1000Hz", "2000Hz", "4000Hz", "8000Hz"],
+    labels: ["1000Hz", "2000Hz", "4000Hz", "8000Hz","500Hz", "250Hz",],
     datasets: [
       {
-        data: [20, 45, 28, 80, 99, 43],
+        data: [rD[0],rD[1],rD[2],rD[3],rD[4],rD[5]],
         color: () => "#2196F3",
       },
       {
-        data: [10, 20, 38, 90, 59, 60],
+        data: [lD[0],lD[1],lD[2],lD[3],lD[4],lD[5]],
         color: () => "#ED7C33",
       },
     ],
   };
 
-  const tableHeader = ["~fHZ", "250", "500", "1000", "2000", "4000", "8000"];
+  const tableHeader = ["~fHZ", "1000", "2000", "4000", "8000","500", "250"];
   const tableDatas = [
-    ["Sağ kulak", "40", "18", "58", "30", "60", "80"],
-    ["Sol kulak", "40", "18", "58", "30", "60", "80"],
+    ["Sağ kulak",rD[0],rD[1],rD[2],rD[3],rD[4],rD[5]],
+    ["Sol kulak", lD[0],lD[1],lD[2],lD[3],lD[4],lD[5]],
   ];
   return (
     <View style={{ alignItems: "center", height: "100%" }}>

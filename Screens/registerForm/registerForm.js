@@ -6,6 +6,7 @@ import {
   Animated,
   Dimensions,
   TouchableOpacity,
+  Alert,
 } from 'react-native';
 import CToolbar from '../../Components/CToolBar';
 import CTextInput from '../../Components/CTextInput';
@@ -17,7 +18,7 @@ import { infos } from '../../Store/action/action';
 const wHeight = Dimensions.get('window').width;
 const H_MAX_HEIGHT = wHeight * 0.36;
 const H_MIN_HEIGHT = wHeight * 0.24;
-
+let d;
 const RegisterFormScreen = (props) => {
   const dispatch = useDispatch();
   const [name, setName] = React.useState('');
@@ -61,8 +62,21 @@ const RegisterFormScreen = (props) => {
     var dd = String(datee.getDate()).padStart(2, '0');
     var mm = String(datee.getMonth() + 1).padStart(2, '0'); //January is 0!
     var yyyy = datee.getFullYear();
+    d=dd + '.' + mm + '.' + yyyy;
     return 'Dogum tarihiniz :' + dd + '.' + mm + '.' + yyyy;
   };
+
+  const checkValues=()=>{
+    if(name.trim()=='' ||  surname.trim()=='' ||  d.trim()==''){
+      alert("lütfen bilgilerinizi tam girdiğinizden emin olunuz!");
+    } 
+    else if(phone.length<11){
+      alert("lütfen telefon numaranızı tam girdiğinizden emin olunuz!");
+    }else{
+      dispatch(infos(name, surname, sex, d, phone));
+      props.navigation.navigate('accept');
+    }
+  }
   return (
     <Animated.View style={{ alignItems: 'center', height: '100%' }}>
       <Animated.View style={{ height: headerScrollHeight }}>
@@ -177,8 +191,8 @@ const RegisterFormScreen = (props) => {
         <TouchableOpacity
           style={style.nextPageButton}
           onPress={() => {
-            dispatch(infos(name, surname, sex, date, phone));
-            props.navigation.navigate('accept');
+            checkValues();
+            
           }}
         >
           <Text style={style.buttonText}>Sonraki sayfa</Text>

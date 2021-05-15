@@ -1,13 +1,14 @@
-export const HEARED = 'HEARED';
-export const UNHEARED = 'UNHEARED';
-export const CHANGE_SOUND = 'CHANGE_SOUND';
-export const CHANGE_SOUND_TO_ZERO = 'CHANGE_SOUND_TO_ZERO';
-export const INFOS = 'INFOS';
-export const RESET_VALUES = 'RESET_VALUES';
-export const LEFTEAR = 'LEFTEAR';
-export const RIGHTEAR = 'RIGHTEAR';
-export const RIGHTSCORES = 'RIGHTSCORES';
-export const LEFTSCORES = 'LEFTSCORES';
+export const HEARED = "HEARED";
+export const UNHEARED = "UNHEARED";
+export const CHANGE_SOUND = "CHANGE_SOUND";
+export const CHANGE_SOUND_TO_ZERO = "CHANGE_SOUND_TO_ZERO";
+export const INFOS = "INFOS";
+export const RESET_VALUES = "RESET_VALUES";
+export const LEFTEAR = "LEFTEAR";
+export const RIGHTEAR = "RIGHTEAR";
+export const RIGHTSCORES = "RIGHTSCORES";
+export const LEFTSCORES = "LEFTSCORES";
+export const GETDATA = "GETDATA";
 export const heared = () => {
   return { type: HEARED };
 };
@@ -36,7 +37,7 @@ export const infos = (name, surname, sex, date, phone) => {
 };
 
 export const resetValues = () => {
-  console.log('reset');
+  console.log("reset");
   return { type: RESET_VALUES };
 };
 
@@ -65,17 +66,36 @@ export const save = () => {
     const phoneNumber = getState().reducer.phoneNumber;
     const leftScores = getState().reducer.leftScores;
     const rightScores = getState().reducer.rightScores;
-
-    console.log(
-      'Name' + name,
-      'Surname' + surname,
-      'Gender' + gender,
-      'Birtdate' + birthdate,
-      'number' + phoneNumber,
-      'left' + leftScores.map((x) => x.desibel),
-      'right' + rightScores.map((x) => x.desibel)
+    console.log(name,surname,gender,birthdate,phoneNumber,leftScores,rightScores);
+    const response = await fetch(
+      `https://master-theisis-app-92c1c-default-rtdb.firebaseio.com/users.json`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          surname,
+          gender,
+          birthdate,
+          phoneNumber,
+          leftScores,
+          rightScores,
+        }),
+      }
     );
-    dispatch({ type: 'bos' });
+    const data = await response.json();
+    dispatch({
+      type: GETDATA,
+      name: data.name,
+      surname: data.surname,
+      gender: data.gender,
+      birthdate: data.birthdate,
+      phoneNumber: data.phoneNumber,
+      leftScores: data.leftScores,
+      rightScores: data.rightScores,
+    });
   };
 };
 export const leftEar = () => {

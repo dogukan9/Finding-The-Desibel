@@ -54,12 +54,14 @@ export default function (state = initialState, action) {
       };
 
     case LEFTSCORES:
+      console.log(state.desibels);
       return {
         ...state,
         leftScores: state.desibels,
       };
 
     case RIGHTSCORES:
+      console.log(state.desibels);
       return {
         ...state,
         rightScores: state.desibels,

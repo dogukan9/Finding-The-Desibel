@@ -16,7 +16,6 @@ import { SOUNDS } from '../../Data/data';
 import {
   changeSound,
   changeSoundToZero,
-  resetValues,
   saveLeft,
   saveRight,
   save,
@@ -38,14 +37,11 @@ const ListenScreen = (props) => {
   });
   let sound;
   const dispatch = useDispatch();
-
   let soundIndex = useSelector((state) => state.reducer.soundIndex);
-  //let leftEar = useSelector((state) => state.reducer.leftEar);
-  //let rightEar = useSelector((state) => state.reducer.rightEar);
   let leftEar = props.route.params.leftEar;
   let rightEar = props.route.params.rightEar;
 
-  if (soundIndex >= 3) {
+  if (soundIndex >= 6) {
     dispatch(changeSoundToZero());
     if (leftEar && !rightEar) {
       dispatch(saveLeft());

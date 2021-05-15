@@ -45,7 +45,10 @@ const QuestionScreen = (props) => {
         <TouchableOpacity
           style={style.buton}
           onPress={() => {
-            dispatch(heared());
+            if (unclear == 0) {
+              dispatch(heared());
+            }
+
             if (unclear !== 0) {
               unclear = 0;
               dispatch(changeSound());
