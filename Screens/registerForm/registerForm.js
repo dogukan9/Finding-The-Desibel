@@ -62,26 +62,25 @@ const RegisterFormScreen = (props) => {
     var dd = String(datee.getDate()).padStart(2, '0');
     var mm = String(datee.getMonth() + 1).padStart(2, '0'); //January is 0!
     var yyyy = datee.getFullYear();
-    d=dd + '.' + mm + '.' + yyyy;
+    d = dd + '.' + mm + '.' + yyyy;
     return 'Dogum tarihiniz :' + dd + '.' + mm + '.' + yyyy;
   };
 
-  const checkValues=()=>{
-    if(name.trim()=='' ||  surname.trim()=='' ||  d.trim()==''){
-      alert("lütfen bilgilerinizi tam girdiğinizden emin olunuz!");
-    } 
-    else if(phone.length<11){
-      alert("lütfen telefon numaranızı tam girdiğinizden emin olunuz!");
-    }else{
+  const checkValues = () => {
+    if (name.trim() == '' || surname.trim() == '' || d.trim() == '') {
+      alert('lütfen bilgilerinizi tam girdiğinizden emin olunuz!');
+    } else if (phone.length < 11) {
+      alert('lütfen telefon numaranızı tam girdiğinizden emin olunuz!');
+    } else {
       dispatch(infos(name, surname, sex, d, phone));
-      props.navigation.navigate('accept');
+      props.navigation.navigate('instruction');
     }
-  }
+  };
   return (
     <Animated.View style={{ alignItems: 'center', height: '100%' }}>
       <Animated.View style={{ height: headerScrollHeight }}>
         <CToolbar
-          title='Hasta Kayıt Ekranı'
+          title='KULLANICI KAYIT FORMU'
           onBackPress={props.navigation.goBack}
         />
       </Animated.View>
@@ -192,7 +191,6 @@ const RegisterFormScreen = (props) => {
           style={style.nextPageButton}
           onPress={() => {
             checkValues();
-            
           }}
         >
           <Text style={style.buttonText}>Sonraki sayfa</Text>

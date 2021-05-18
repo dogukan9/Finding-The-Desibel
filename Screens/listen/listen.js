@@ -101,7 +101,7 @@ const ListenScreen = (props) => {
     >
       <Animated.View style={{ height: headerScrollHeight }}>
         <CToolbar
-          title='Dinleme Ekranı'
+          title='DİNLEME EKRANI'
           onBackPress={props.navigation.goBack}
         />
       </Animated.View>

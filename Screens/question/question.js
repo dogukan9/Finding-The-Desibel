@@ -39,7 +39,7 @@ const QuestionScreen = (props) => {
       }}
     >
       <Animated.View style={{ height: headerScrollHeight }}>
-        <CToolbar title='Answer Screen' onBackPress={props.navigation.goBack} />
+        <CToolbar title='CEVAP EKRANI' onBackPress={props.navigation.goBack} />
       </Animated.View>
       <View style={style.container}>
         <TouchableOpacity
@@ -65,7 +65,9 @@ const QuestionScreen = (props) => {
             dispatch(unheared());
             unclear = unclear + 1;
             console.log('unclear=' + unclear);
-
+            if (unclear == 8) {
+              unclear = 0;
+            }
             props.navigation.navigate('listen');
           }}
         >

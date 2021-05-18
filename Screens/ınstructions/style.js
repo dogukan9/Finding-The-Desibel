@@ -4,7 +4,7 @@ export const style=StyleSheet.create({
     card:{
         margin: "15%",
         width: "70%",
-        height: 350,
+        height: 430,
         borderRadius: 10,
         zIndex: 2,
         backgroundColor: '#2196F3',
