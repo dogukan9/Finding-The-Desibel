@@ -73,7 +73,7 @@ const RegisterFormScreen = (props) => {
       alert('lütfen telefon numaranızı tam girdiğinizden emin olunuz!');
     } else {
       dispatch(infos(name, surname, sex, d, phone));
-      props.navigation.navigate('accept');
+      props.navigation.navigate('instruction');
     }
   };
   return (

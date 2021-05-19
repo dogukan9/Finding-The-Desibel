@@ -17,7 +17,7 @@ export const style = StyleSheet.create({
     textAlign: 'center',
 
     flexDirection: 'column',
-    backgroundColor: 'blue',
+    backgroundColor: '#2196F3',
   },
 
   text: {

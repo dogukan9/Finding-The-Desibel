@@ -33,16 +33,16 @@ const InstructionScreen = (props) => {
           </Text>
         </View>
         <View>
-          <Text style={style.cardText}>Kulaklığınızı takınız.</Text>
+          <Text style={style.cardText}> Sessiz bir alanda olduğunuzdan emin olun</Text>
         </View>
         <View>
           <Text style={style.cardText}>Kulaklığınızı takınız.</Text>
         </View>
         <View>
-          <Text style={style.cardText}>Kulaklığınızı takınız.</Text>
+          <Text style={style.cardText}>Önce sağ kulagınız ile daha sonra sol kulağınız ile dinleyiniz.</Text>
         </View>
         <View>
-          <Text style={style.cardText}>Kulaklığınızı takınız.</Text>
+          <Text style={style.cardText}>Kulağınıza gelecek ses sinyallerini dikkatli bir şekilde dinleyiniz, çok az bile ses duysanız duydum butonuna basın.</Text>
         </View>
         <TouchableOpacity
           style={style.nextPageButton}
