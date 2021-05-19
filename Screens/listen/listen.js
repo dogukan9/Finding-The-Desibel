@@ -41,7 +41,7 @@ const ListenScreen = (props) => {
   let leftEar = props.route.params.leftEar;
   let rightEar = props.route.params.rightEar;
 
-  if (soundIndex >= 1) {
+  if (soundIndex >= 6) {
     dispatch(changeSoundToZero());
     if (leftEar && !rightEar) {
       dispatch(saveLeft());

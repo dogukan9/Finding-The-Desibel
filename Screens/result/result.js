@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, Animated, Dimensions, ScrollView } from "react-native";
-import { LineChart } from "react-native-chart-kit";
+import { LineChart,BarChart } from "react-native-chart-kit";
 import { style } from "./style";
 import CToolBar from "../../Components/CToolBar";
 import { Table, Row, Rows } from "react-native-table-component";
@@ -11,6 +11,13 @@ let lD = [];
 let rightAverage=0;
 let leftAverage=0
 const ResultScreen = (props) => {
+  const minValue =0;
+
+function* yLabel() {
+  yield* [minValue,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95];
+}
+const yLabelIterator = yLabel();
+
   let leftEar = useSelector((state) => state.reducer.leftScores);
   let rightEar = useSelector((state) => state.reducer.rightScores);
 
@@ -32,45 +39,41 @@ const ResultScreen = (props) => {
     outputRange: [H_MAX_HEIGHT, H_MIN_HEIGHT],
     extrapolate: "clamp",
   });
-  const chartConfig = {
-    backgroundGradientFrom: "#ffffff",
-    backgroundGradientTo: "#ffffff",
-    color: (opacity = 1) => `rgba(2, 169, 244, ${opacity})`,
-  };
   const screenWidth = Dimensions.get("window").width;
   const data = {
-    labels: ["1000Hz", "2000Hz", "4000Hz", "8000Hz", "500Hz", "250Hz"],
+    labels: ["250Hz", "500Hz", "1000Hz", "2000Hz", "4000Hz", "8000Hz"],
     datasets: [
       {
-        data: [rD[0], rD[1], rD[2], rD[3], rD[4], rD[5]],
+        data: [rD[5], rD[4], rD[0], rD[1], rD[2], rD[3]],
         color: () => "#2196F3",
       },
       {
-        data: [lD[0], lD[1], lD[2], lD[3], lD[4], lD[5]],
+        data: [lD[5], rD[4], lD[0], lD[1], lD[2], lD[3]],
         color: () => "#ED7C33",
       },
     ],
   };
 
-  const tableHeader = ["~fHZ", "1000", "2000", "4000", "8000", "500", "250"];
+  const tableHeader = ["~fHZ", "250", "500", "1000", "2000", "4000", "8000"];
   const tableDatas = [
     [
       "Sağ kulak",
+      rD[5] + "db",
+      rD[4] + "db",
       rD[0] + "db",
       rD[1] + "db",
       rD[2] + "db",
       rD[3] + "db",
-      rD[4] + "db",
-      rD[5] + "db",
     ],
     [
       "Sol kulak",
+      lD[5] + "db",
+      lD[4] + "db",
       lD[0] + "db",
       lD[1] + "db",
       lD[2] + "db",
       lD[3] + "db",
-      lD[4] + "db",
-      lD[5] + "db",
+      
     ],
   ];
   return (
@@ -112,8 +115,22 @@ const ResultScreen = (props) => {
           data={data}
           width={screenWidth}
           yAxisLabel="db"
-          height={200}
-          chartConfig={chartConfig}
+          height={400}
+          segments={18}
+          fromZero={true}
+          chartConfig={{
+            backgroundGradientFrom: "#ffffff",
+            backgroundGradientTo: "#ffffff",
+            color: (opacity = 1) => `rgba(2, 169, 244, ${opacity})`,
+            formatYLabel:()=>yLabelIterator.next().value,
+            data:data.datasets,
+            propsForDots: {
+              r: '6',
+              strokeWidth: '2',
+              stroke: '#ffa726',
+            },
+          }}
+          formatYLabel={()=>yLabelIterator.next().value}
           accessor="population"
           backgroundColor="transparent"
           paddingLeft="15"
