@@ -27,11 +27,7 @@ const InstructionScreen = (props) => {
         <View>
           <Text style={style.title}>Talimatlar</Text>
         </View>
-        <View>
-          <Text style={{ fontSize: 15, margin: '4%', color: 'white' }}>
-            lorem ipsum dolor sit amet,lorem ipsum dolor sit amet
-          </Text>
-        </View>
+       
         <View>
           <Text style={style.cardText}> Sessiz bir alanda olduğunuzdan emin olun</Text>
         </View>

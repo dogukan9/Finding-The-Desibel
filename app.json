@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "master-thesis-app",
-    "slug": "master-thesis-app",
+    "name": "Furkan-thesis-app",
+    "slug": "Furkan-thesis-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -10,7 +10,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "sdkVersion":"40.0.0",
+    "sdkVersion": "40.0.0",
     "updates": {
       "fallbackToCacheTimeout": 0
     },
@@ -24,7 +24,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.dogukan9.Furkanthesisapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"

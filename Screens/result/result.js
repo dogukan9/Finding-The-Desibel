@@ -20,13 +20,15 @@ const yLabelIterator = yLabel();
 
   let leftEar = useSelector((state) => state.reducer.leftScores);
   let rightEar = useSelector((state) => state.reducer.rightScores);
-
+/*
   leftEar.map((r) => {
     lD.push(r.desibel);
   });
   rightEar.map((r) => {
     rD.push(r.desibel);
-  });
+  });*/
+  lD=[10,15,25,25,30,35]
+  rD=[20,15,55,25,30,35]
   rightAverage=(rD[4]+rD[0]+rD[1]+rD[2])/4;
   leftAverage=(lD[4]+lD[0]+lD[1]+lD[2])/4;
 
@@ -44,11 +46,15 @@ const yLabelIterator = yLabel();
     labels: ["250Hz", "500Hz", "1000Hz", "2000Hz", "4000Hz", "8000Hz"],
     datasets: [
       {
-        data: [rD[5], rD[4], rD[0], rD[1], rD[2], rD[3]],
+       data: [rightEar[5].desibel,rightEar[4].desibel,rightEar[0].desibel,rightEar[1].desibel,rightEar[2].desibel,rightEar[3].desibel],
+       // data:[55,55,55,25,50,60],
         color: () => "#2196F3",
       },
       {
-        data: [lD[5], rD[4], lD[0], lD[1], lD[2], lD[3]],
+     // data: [lD[5], lD[4], lD[0], lD[1], lD[2], lD[3]],
+    //     data:[15,25,65,20,90,60],
+    data: [leftEar[5].desibel,leftEar[4].desibel,leftEar[0].desibel,leftEar[1].desibel,leftEar[2].desibel,leftEar[3].desibel],
+
         color: () => "#ED7C33",
       },
     ],
@@ -58,21 +64,21 @@ const yLabelIterator = yLabel();
   const tableDatas = [
     [
       "Sağ kulak",
-      rD[5] + "db",
-      rD[4] + "db",
-      rD[0] + "db",
-      rD[1] + "db",
-      rD[2] + "db",
-      rD[3] + "db",
+      rightEar[5].desibel + "db",
+      rightEar[4].desibel+ "db",
+      rightEar[0].desibel+ "db",
+      rightEar[1].desibel + "db",
+      rightEar[2].desibel + "db",
+      rightEar[3].desibel + "db",
     ],
     [
       "Sol kulak",
-      lD[5] + "db",
-      lD[4] + "db",
-      lD[0] + "db",
-      lD[1] + "db",
-      lD[2] + "db",
-      lD[3] + "db",
+      leftEar[5].desibel + "db",
+      leftEar[4].desibel+ "db",
+      leftEar[0].desibel+ "db",
+      leftEar[1].desibel + "db",
+      leftEar[2].desibel + "db",
+      leftEar[3].desibel + "db",
       
     ],
   ];

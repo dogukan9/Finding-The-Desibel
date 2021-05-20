@@ -24,13 +24,13 @@ export const style=StyleSheet.create({
      margin:"4%",
      fontWeight:"400",
      color:"white"
-     
+
     },
     cardText:{
         fontSize:15,
         margin:"4%",
         fontWeight:"bold",
-        color:"white"   
+        color:"white"
     },
     nextPageButton:{
     marginLeft: "25%",
@@ -56,5 +56,5 @@ export const style=StyleSheet.create({
         fontSize:18,
         padding:15
     }
-    
+
 })

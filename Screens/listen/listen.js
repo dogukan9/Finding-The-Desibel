@@ -24,6 +24,7 @@ import {
 import b from './b.gif';
 let templeft = false;
 let tempright = false;
+let soundName=["1000Khz","2000Khz","4000Khz","8000Khz","500Hz","250Hz"]
 const ListenScreen = (props) => {
   const wHeight = Dimensions.get('window').width;
   const H_MAX_HEIGHT = wHeight * 0.36;
@@ -118,6 +119,7 @@ const ListenScreen = (props) => {
           colors={['#fff', '#fff', '#fff']}
           style={style.button}
         >
+        <Text>{soundName[soundIndex]}</Text>
           <TouchableOpacity
             style={style.radius}
             onPress={() => {
@@ -126,6 +128,7 @@ const ListenScreen = (props) => {
             }}
           >
             {show ? (
+              
               <Text style={style.text}>Dinlemek için tıklayın</Text>
             ) : (
               <View style={style.image}>
