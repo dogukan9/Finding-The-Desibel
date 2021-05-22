@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Animated, Dimensions, ScrollView } from "react-native";
+import { View, Text, Animated, Dimensions, ScrollView,Button} from "react-native";
 import { LineChart,BarChart } from "react-native-chart-kit";
 import { style } from "./style";
 import CToolBar from "../../Components/CToolBar";
@@ -53,23 +53,20 @@ const yLabelIterator = yLabel();
     labels: ["250Hz", "500Hz", "1000Hz", "2000Hz", "4000Hz", "8000Hz"],
     datasets: [
       {
-      // data: [rightEar[5].desibel,rightEar[4].desibel,rightEar[0].desibel,rightEar[1].desibel,rightEar[2].desibel,rightEar[3].desibel],
+     
         data:[r1,r2,r3,r4,r5,r6],
-        color: () => "#2196F3",
-      },
-      {
-     //data: [lD[5], lD[4], lD[0], lD[1], lD[2], lD[3]],
-     data:[l1,l2,l3,l4,l5,l6],
-
-   // data: [leftEar[5].desibel,leftEar[4].desibel,leftEar[0].desibel,leftEar[1].desibel,leftEar[2].desibel,leftEar[3].desibel],
-
         color: () => "red",
       },
       {
-        //data: [lD[5], lD[4], lD[0], lD[1], lD[2], lD[3]],
+    
+     data:[l1,l2,l3,l4,l5,l6],
+
+
+        color: () => "blue",
+      },
+      {
         data:[90],
    
-      // data: [leftEar[5].desibel,leftEar[4].desibel,leftEar[0].desibel,leftEar[1].desibel,leftEar[2].desibel,leftEar[3].desibel],
    
            color: () => "white",
          },
@@ -128,10 +125,10 @@ const yLabelIterator = yLabel();
             marginBottom: 15,
           }}
         >
-          <Text style={{ color: "#2196F3", fontSize: 18, fontWeight: "bold" }}>
+          <Text style={{ color: "red", fontSize: 18, fontWeight: "bold" }}>
             Sağ Kulak
           </Text>
-          <Text style={{ color: "#ED7C33", fontSize: 18, fontWeight: "bold" }}>
+          <Text style={{ color: "blue", fontSize: 18, fontWeight: "bold" }}>
             Sol Kulak
           </Text>
         </View>
@@ -188,6 +185,7 @@ const yLabelIterator = yLabel();
             textStyle={style.rowStyle}
           ></Rows>
         </Table>
+       
       </ScrollView>
     </View>
   );

@@ -56,7 +56,10 @@ const StackNavigation = (props) => {
         component={ResultScreen}
         options={{headerShown:false}}
       ></Stack.Screen>
+      
     </Stack.Navigator>
+    
+    
   );
 };
 
