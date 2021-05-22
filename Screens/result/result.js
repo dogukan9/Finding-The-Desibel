@@ -14,23 +14,30 @@ const ResultScreen = (props) => {
   const minValue =0;
 
 function* yLabel() {
-  yield* [minValue,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95];
+  yield* [0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90];
 }
 const yLabelIterator = yLabel();
 
   let leftEar = useSelector((state) => state.reducer.leftScores);
   let rightEar = useSelector((state) => state.reducer.rightScores);
-/*
-  leftEar.map((r) => {
-    lD.push(r.desibel);
-  });
-  rightEar.map((r) => {
-    rD.push(r.desibel);
-  });*/
-  lD=[10,15,25,25,30,35]
-  rD=[20,15,55,25,30,35]
-  rightAverage=(rD[4]+rD[0]+rD[1]+rD[2])/4;
-  leftAverage=(lD[4]+lD[0]+lD[1]+lD[2])/4;
+
+
+  
+ let r1=rightEar[5].desibel;
+ let r2=rightEar[4].desibel;
+ let r3=rightEar[0].desibel;
+ let r4=rightEar[1].desibel;
+ let r5=rightEar[2].desibel;
+ let r6=rightEar[3].desibel;
+
+ let l1=leftEar[5].desibel;
+ let l2=leftEar[4].desibel;
+ let l3=leftEar[0].desibel;
+ let l4=leftEar[1].desibel;
+ let l5=leftEar[2].desibel;
+ let l6=leftEar[3].desibel;
+  rightAverage=(rightEar[4].desibel+rightEar[0].desibel+rightEar[1].desibel+rightEar[2].desibel)/4;
+  leftAverage=(leftEar[4].desibel+leftEar[0].desibel+leftEar[1].desibel+leftEar[2].desibel)/4;
 
   const wHeight = Dimensions.get("window").width;
   const H_MAX_HEIGHT = wHeight * 0.36;
@@ -46,17 +53,26 @@ const yLabelIterator = yLabel();
     labels: ["250Hz", "500Hz", "1000Hz", "2000Hz", "4000Hz", "8000Hz"],
     datasets: [
       {
-       data: [rightEar[5].desibel,rightEar[4].desibel,rightEar[0].desibel,rightEar[1].desibel,rightEar[2].desibel,rightEar[3].desibel],
-       // data:[55,55,55,25,50,60],
+      // data: [rightEar[5].desibel,rightEar[4].desibel,rightEar[0].desibel,rightEar[1].desibel,rightEar[2].desibel,rightEar[3].desibel],
+        data:[r1,r2,r3,r4,r5,r6],
         color: () => "#2196F3",
       },
       {
-     // data: [lD[5], lD[4], lD[0], lD[1], lD[2], lD[3]],
-    //     data:[15,25,65,20,90,60],
-    data: [leftEar[5].desibel,leftEar[4].desibel,leftEar[0].desibel,leftEar[1].desibel,leftEar[2].desibel,leftEar[3].desibel],
+     //data: [lD[5], lD[4], lD[0], lD[1], lD[2], lD[3]],
+     data:[l1,l2,l3,l4,l5,l6],
 
-        color: () => "#ED7C33",
+   // data: [leftEar[5].desibel,leftEar[4].desibel,leftEar[0].desibel,leftEar[1].desibel,leftEar[2].desibel,leftEar[3].desibel],
+
+        color: () => "red",
       },
+      {
+        //data: [lD[5], lD[4], lD[0], lD[1], lD[2], lD[3]],
+        data:[90],
+   
+      // data: [leftEar[5].desibel,leftEar[4].desibel,leftEar[0].desibel,leftEar[1].desibel,leftEar[2].desibel,leftEar[3].desibel],
+   
+           color: () => "white",
+         },
     ],
   };
 
@@ -69,16 +85,19 @@ const yLabelIterator = yLabel();
       rightEar[0].desibel+ "db",
       rightEar[1].desibel + "db",
       rightEar[2].desibel + "db",
-      rightEar[3].desibel + "db",
+      rightEar[3].desibel + "db"
+      
+    
     ],
     [
       "Sol kulak",
-      leftEar[5].desibel + "db",
+     leftEar[5].desibel + "db",
       leftEar[4].desibel+ "db",
       leftEar[0].desibel+ "db",
       leftEar[1].desibel + "db",
       leftEar[2].desibel + "db",
-      leftEar[3].desibel + "db",
+      leftEar[3].desibel + "db"
+  
       
     ],
   ];
@@ -124,20 +143,23 @@ const yLabelIterator = yLabel();
           height={400}
           segments={18}
           fromZero={true}
+      
           chartConfig={{
-            backgroundGradientFrom: "#ffffff",
-            backgroundGradientTo: "#ffffff",
+            backgroundGradientFrom: "white",
+            backgroundGradientTo: "white",
             color: (opacity = 1) => `rgba(2, 169, 244, ${opacity})`,
             formatYLabel:()=>yLabelIterator.next().value,
             data:data.datasets,
             propsForDots: {
-              r: '6',
-              strokeWidth: '2',
-              stroke: '#ffa726',
+              r: '3',
+              strokeWidth: '1',
+              stroke: 'white',
+              
+             
             },
           }}
           formatYLabel={()=>yLabelIterator.next().value}
-          accessor="population"
+        
           backgroundColor="transparent"
           paddingLeft="15"
         />
